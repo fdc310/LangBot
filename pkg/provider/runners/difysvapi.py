@@ -442,7 +442,7 @@ class DifyServiceAPIRunner(runner.RequestRunner):
 
     async def _agent_chat_messages_chunk(
         self, query: core_entities.Query
-    ) -> typing.AsyncGenerator[llm_entities.Message, None]:
+    ) -> typing.AsyncGenerator[llm_entities.MessageChunk, None]:
         """调用聊天助手"""
         cov_id = query.session.using_conversation.uuid or ''
         query.variables['conversation_id'] = cov_id
@@ -560,7 +560,7 @@ class DifyServiceAPIRunner(runner.RequestRunner):
 
         query.session.using_conversation.uuid = chunk['conversation_id']
 
-    async def _workflow_messages_chunk(self, query: core_entities.Query) -> typing.AsyncGenerator[llm_entities.Message, None]:
+    async def _workflow_messages_chunk(self, query: core_entities.Query) -> typing.AsyncGenerator[llm_entities.MessageChunk, None]:
         """调用工作流"""
 
         if not query.session.using_conversation.uuid:
