@@ -148,8 +148,6 @@ class LocalAgentRunner(runner.RequestRunner):
                         if tool_call.function and tool_call.function.arguments:
                             # 流式处理中，工具调用参数可能分多个chunk返回，需要追加而不是覆盖
                             tool_calls_map[tool_call.id].function.arguments += tool_call.function.arguments
-                # print(list(tool_calls_map.values()) if (tool_calls_map and msg.is_final) else None)
-                # continue
                 # 每8个chunk或最后一个chunk时，输出所有累积的内容
                 if msg_idx % 8 == 0 or msg.is_final:
                     msg_sequence += 1

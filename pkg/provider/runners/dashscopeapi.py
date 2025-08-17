@@ -122,7 +122,6 @@ class DashScopeAPIRunner(runner.RequestRunner):
         )
         idx_chunk = 0
         try:
-            # print(await query.adapter.is_stream_output_supported())
             is_stream = await query.adapter.is_stream_output_supported()
 
         except AttributeError:
@@ -251,7 +250,6 @@ class DashScopeAPIRunner(runner.RequestRunner):
 
         # 处理API返回的流式输出
         try:
-            # print(await query.adapter.is_stream_output_supported())
             is_stream = await query.adapter.is_stream_output_supported()
 
         except AttributeError:
